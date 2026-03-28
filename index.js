@@ -13,8 +13,13 @@ Workflow:
 
 var generated_number = Math.floor(Math.random()*100) + 1;
 var user_input;
-guess = () => {
-    user_input = parseInt(window.prompt("Guess a number between 1 to 100"));
+const guess = () => {
+    user_input = window.prompt("Guess a number between 1 to 100");
+    if (isNaN(user_input)){ 
+        alert("Please enter a valid number!");
+        guess();
+    }
+    user_input = parseInt(user_input);
 }
 guess();
 
