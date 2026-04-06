@@ -1,36 +1,22 @@
-// Number Guessing Game
-/*
-Workflow:
-1. The computer generates a random number
-2. User inputs a number
-3. If user_input == generated_number, then game over
-   else
-    the computer indicates whether the generated_number < user_input or generated_number > user_input
-4. Asks the user for another guess
-5. User inputs again
-6. The process repeats
-*/
+const generatedNumber = Math.floor(Math.random() * 100) + 1;
 
-var generated_number = Math.floor(Math.random()*100) + 1;
-var user_input;
-const guess = () => {
-    user_input = window.prompt("Guess a number between 1 to 100");
-    if (isNaN(user_input)){ 
+while (true) {
+    const input = window.prompt("Guess a number between 1 and 100:");
+
+    if (input === null) break;
+
+    const userGuess = parseInt(input, 10);
+
+    if (isNaN(userGuess)) {
         alert("Please enter a valid number!");
-        guess();
+        continue;
     }
-    user_input = parseInt(user_input);
-}
-guess();
 
-while (user_input !== generated_number){
-    if (user_input < generated_number)
-        alert("Make a larger guess")
-    else
-        alert("Make a smaller guess")
+    if (userGuess === generatedNumber) {
+        console.log("Congratulations! You won.");
+        break;
+    }
 
-    guess();
+    const message = userGuess < generatedNumber ? "Make a larger guess" : "Make a smaller guess";
+    alert(message);
 }
-        
-// document.getElementById("myH1").textContent = "Congratulations! You won."
-console.log("Congratulations! You won.")
