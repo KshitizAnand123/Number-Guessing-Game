@@ -1,0 +1,1 @@
+console.log("This is Hello from folder_demo/index.js");
