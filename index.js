@@ -3,7 +3,10 @@ const generatedNumber = Math.floor(Math.random() * 100) + 1;
 while (true) {
     const input = window.prompt("Guess a number between 1 and 100:");
 
-    if (input === null) break;
+    if (input === null) {
+        alert("You quit the game.");
+        break;
+    }
 
     const userGuess = parseInt(input, 10);
 
@@ -12,11 +15,16 @@ while (true) {
         continue;
     }
 
+    if (userGuess < 1 || userGuess > 100) {
+        alert("Please enter a number between 1 and 100.");
+        continue;
+    }
+
     if (userGuess === generatedNumber) {
-        console.log("Congratulations! You won.");
+        alert("Congratulations! You won.");
         break;
     }
 
-    const message = userGuess < generatedNumber ? "Make a larger guess" : "Make a smaller guess";
+    const message = userGuess < generatedNumber ? "Too low! Make a larger guess." : "Too high! Make a smaller guess.";
     alert(message);
 }
